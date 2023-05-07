@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+<div class="container p-5">
+  <h1 class="display-1 text-center p-5">Login</h1>
+  <div class="d-flex justify-content-center align-items-center">
+    <form th:action="@{/login}" method="post" th:object="${User}" class="form-check-inline">
+      <div class="row">
+        <div class="col">
+          <label class="form-label p-2">Username :</label>
+          <input class="form-control" type="text" th:field="*{username}" name="username">
+          <div class="alert alert-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label class="form-label p-2">Password :</label>
+          <input class="form-control" type="password" th:field="*{password}" name="password">
+          <div class="alert alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </div>
+      </div>
+      <br><button class="btn btn-success" type="submit">Submit</button>  <a class="link link-success mx-2 p-2" href="/register">Don't have an account ? Sign up</a>
+    </form>
+  </div>
+</div>
+</body>
+</html>
