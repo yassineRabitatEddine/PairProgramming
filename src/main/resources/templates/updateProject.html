@@ -7,18 +7,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <head>
     <meta charset="UTF-8">
-    <title>User</title>
+
+    <title>Search</title>
 </head>
 <body>
-        <div th:insert="navbar :: navbar"></div>
-        <div th:fragment="userAccount">
-            <div class="pt-5 d-flex justify-content-center align-items-center"><h1 class="display-2">Hi <span class="display-2" th:text="${User.username}"></span></h1></div>
-            <div class="mx-2 p-5 d-flex justify-content-center align-items-center">
-                <p class="fs-5">Here you can start a project, import an already created project of yours or search for a project to collaborate in.</p>
+
+<div th:fragment="updateProject">
+    <div th:insert="navbar :: navbar" class="mb-5"></div>
+    <div class=" mb-5 pt-5 d-flex justify-content-center align-items-center"><h1 class="display-2">Modify Project</h1></div>
+    <form class="form form-check-inline d-flex justify-content-center align-items-center" th:action="@{'/userAccount/projects/updateProject/'+${User.getUsername()}+'/'+${Project.getName()}}" method="post">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="New name" name="projectName">
             </div>
-            <div class=" d-flex justify-content-center align-items-center">
-                <a class="btn btn-success mx-2" th:href="@{'/userAccount/projects/addProject/'+${User.getUsername()}}" role="button">Start a project</a> <a class="btn btn-success" th:href="@{'/userAccount/projects/findProject/'+${User.getUsername()}}" role="button">Find a project</a>
+            <div class="col">
+                <input type="submit" class="btn btn-success" value="Submit">
             </div>
         </div>
+    </form>
+</div>
 </body>
 </html>

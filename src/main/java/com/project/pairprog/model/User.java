@@ -5,8 +5,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -27,8 +25,8 @@ public class User {
     //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$")
     private String password;
 
-    @ManyToOne
-    private Project projects;
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "owner")
+    private List<Project> projectsOwned;
 
     public User(Long id, String username, String email, String password) {
         this.id = id;
@@ -71,4 +69,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Project> getProjectsOwned() {
+        return projectsOwned;
+    }
+
+    public void setProjectsOwned(List<Project> projectsOwned) {
+        this.projectsOwned = projectsOwned;
+    }
 }
+

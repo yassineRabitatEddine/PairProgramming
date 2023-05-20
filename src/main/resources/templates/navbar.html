@@ -21,11 +21,11 @@
     </li>
     <div class="d-flex justify-content-end align-items-end">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle nav-link active link-light me-2" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${User.getUsername()}"><i class="bi bi-person"></i></a>
+        <a class="nav-link dropdown-toggle nav-link active link-light me-2" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${User.getUsername()}"></a>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
           <li><a class="dropdown-item">Notifications</a></li>
+          <li><a class="dropdown-item" th:href="@{'/userAccount/projects/listProjects/'+${username}}">Your Projects</a></li>
           <li><a class="dropdown-item" th:href="@{'/userAccount/updateUser/'+${username}}">Modify Account</a></li>
-          <li><a class="dropdown-item" th:href="@{'/userAccount/deleteAccount/'+${username}}">Delete Account</a></li>
           <li><a class="dropdown-item" href="/login">Sign out</a></li>
         </ul>
       </li>
