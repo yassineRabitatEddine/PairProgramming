@@ -15,7 +15,6 @@ public class User {
 
     @NotEmpty(message = "This field should not be empty !")
     private String username;
-    @NotBlank
 
     @NotEmpty(message = "This field should not be empty !")
     @Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}")

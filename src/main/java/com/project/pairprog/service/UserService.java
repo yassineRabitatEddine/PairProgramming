@@ -37,7 +37,7 @@ public class UserService {
     }
 
     public int save(User user) {
-        if (findByUsernameAndPassword(user.getUsername(), user.getPassword())!=null) return 0;
+        if (findByUsername(user.getUsername())!=null) return 0;
         else {
             userRepository.save(user);
             return 1;

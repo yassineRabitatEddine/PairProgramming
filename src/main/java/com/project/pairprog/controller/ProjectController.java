@@ -55,6 +55,7 @@ public class ProjectController {
     @PostMapping("/userAccount/projects/addCollaborator/{username}/{username1}")
     public String addCollaborator(@PathVariable("username") String username,@PathVariable("username1")String username1, Model model,@RequestParam("projectName")String projectName){
         User user=userService.findByUsername(username);
+        User user1=userService.findByUsername(username1);
         Project project=projectService.findByName(projectName);
         if (project==null){
             model.addAttribute("exists",0);
@@ -66,13 +67,20 @@ public class ProjectController {
             if(!user.getProjectsOwned().contains(project)){
                 model.addAttribute("projectOwned",false);
                 model.addAttribute("User",user);
+                model.addAttribute("ProjectCollab",1);
                 return "addCollaboratorPost";
             }
-            else {
+            else if (project.getCollaborators().contains(user1)) {
+                model.addAttribute("projectOwned",true);
+                model.addAttribute("User",user);
+                model.addAttribute("ProjectCollab",0);
+                return "addCollaboratorPost";
+            } else {
                 model.addAttribute("exists",1);
                 model.addAttribute("projectOwned",true);
-                Project project1=projectService.addCollaborator(userService.findByUsername(username1),project);
+                Project project1=projectService.addCollaborator(user1,project);
                 model.addAttribute("returnValue",project1);
+                model.addAttribute("ProjectCollab",1);
             }
             model.addAttribute("User",user);
             return "addCollaboratorPost";
@@ -126,10 +134,15 @@ public class ProjectController {
         if (!token.equals(project.getProject_token())){
             r=0;
             model.addAttribute("equal",r);
+            model.addAttribute("ProjectCollab",1);
             return "joinProjectPost";
 
-        }
-        else{
+        } else if (project.getCollaborators().contains(user)) {
+            model.addAttribute("User",user);
+            model.addAttribute("Project",project);
+            model.addAttribute("ProjectCollab",0);
+            return "joinProjectPostFailed";
+        } else{
             r=1;
             model.addAttribute("equal",r);
             projectService.addCollaborator(userService.findByUsername(username),project);

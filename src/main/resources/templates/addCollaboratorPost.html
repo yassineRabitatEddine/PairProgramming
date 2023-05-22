@@ -16,6 +16,7 @@
     <div th:if="${exists==0}" class="alert alert-danger d-flex justify-content-center align-items-center">This project doesn't exist !</div>
     <div th:if="${returnValue==null}" class="alert alert-danger d-flex justify-content-center align-items-center">User wasn't added successfully</div>
     <div th:unless="${returnValue==null}" class="alert alert-success d-flex justify-content-center align-items-center">User has been added successfully</div>
+    <div th:if="${ProjectCollab==0}" class="alert alert-danger d-flex justify-content-center align-items-center">This user has already been added to this project !</div>
 
 </body>
 </html>
