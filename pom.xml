@@ -56,6 +56,11 @@
             <artifactId>spring-boot-devtools</artifactId>
             <version>3.0.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.0.1-jre</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.webjars/popper.js -->
         <!-- https://mvnrepository.com/artifact/org.webjars/jquery -->
         <!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery.ajax -->
@@ -63,27 +68,6 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>jquery.ajax</artifactId>
             <version>1.2.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>6.0.9</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>6.0.9</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.firebase</groupId>
-            <artifactId>firebase-admin</artifactId>
-            <version>9.1.1</version>
         </dependency>
     </dependencies>
 
